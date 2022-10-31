@@ -1438,6 +1438,7 @@ void DeRestPluginPrivate::apsdeDataIndication(const deCONZ::ApsDataIndication &i
                              sensorNode->manufacturer() == QLatin1String("_TZ3000_a7ouggvs") ||
                              sensorNode->manufacturer() == QLatin1String("_TZ3000_dfgbtub0") ||
                              sensorNode->manufacturer() == QLatin1String("_TZ3000_xabckq1v") ||
+                             sensorNode->manufacturer() == QLatin1String("_TZ3000_i3rjdrwu") ||
                              sensorNode->manufacturer() == QLatin1String("_TYZB02_keyjqthh"))
                     {
                         sensorNode = getSensorNodeForAddressAndEndpoint(ind.srcAddress(), 0x01);
@@ -2765,6 +2766,7 @@ void DeRestPluginPrivate::addLightNode(const deCONZ::Node *node)
                 lightNode.manufacturer() == QLatin1String("_TYZB02_keyjqthh") ||
                 lightNode.manufacturer() == QLatin1String("_TZ3000_dfgbtub0") ||
                 lightNode.manufacturer() == QLatin1String("_TZ3000_xabckq1v") ||
+                lightNode.manufacturer() == QLatin1String("_TZ3000_i3rjdrwu") ||
                 lightNode.manufacturer() == QLatin1String("_TZ3000_a7ouggvs"))
             {
                 hasServerOnOff = false;
@@ -6028,6 +6030,7 @@ void DeRestPluginPrivate::addSensorNode(const deCONZ::Node *node, const deCONZ::
                              manufacturer == QLatin1String("_TYZB02_keyjqthh") ||
                              manufacturer == QLatin1String("_TZ3000_dfgbtub0") ||
                              manufacturer == QLatin1String("_TZ3000_xabckq1v") ||
+                             manufacturer == QLatin1String("_TZ3000_i3rjdrwu") ||
                              manufacturer == QLatin1String("_TZ3000_a7ouggvs"))
                     {
                         //Making the device only for endpoint 0x01
@@ -16104,9 +16107,7 @@ void DeRestPlugin::idleTimerFired()
                 {
                     if (GP_SendPairingIfNeeded(sensorNode, d->apsCtrl, d->zclSeq + 1))
                     {
-                        processSensors = true;
                         d->zclSeq++;
-                        break;
                     }
                 }
 
